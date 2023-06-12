@@ -1,4 +1,11 @@
 # MySokoban
 
 
-Sokoban game project that is not finished - the game works with reset (R), next (N) and previous(P) levels.
+Sokoban game project that is not finished
+
+Missing :
+
+- Multiple levels
+- Debugging
+- Images
+- Move debugging - it currently crashes the game when we try to move

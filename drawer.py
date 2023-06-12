@@ -7,10 +7,11 @@ class Drawer:
 
     def draw(self):
         self.game.screen.fill((0, 0, 0))
+        cell_size = 50
+
         for y, row in enumerate(self.game.level):
             for x, cell in enumerate(row):
                 if cell != self.game.empty:
-                    cell_size = 25
                     colors = {
                         self.game.player: (167, 135, 255),
                         self.game.player_on_goal_square: (158, 119, 255),
@@ -24,13 +25,15 @@ class Drawer:
                         self.game.screen,
                         colors[cell],
                         Rect(
-                            (x * cell_size, y * cell_size),
-                            (cell_size, cell_size)
+                            x * cell_size,
+                            y * cell_size,
+                            cell_size,
+                            cell_size
                         )
                     )
 
-                    text = self.game.font.render(cell, True, (0, 0, 0))
-                    self.game.screen.blit(
-                        text,
-                        (x * cell_size, y * cell_size)
+                    text = self.game.font.render(str(cell), True, (0, 0, 0))
+                    text_rect = text.get_rect(
+                        center=(x * cell_size + cell_size // 2, y * cell_size + cell_size // 2)
                     )
+                    self.game.screen.blit(text, text_rect)
